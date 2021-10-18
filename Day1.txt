@@ -6,38 +6,120 @@
 *************************************************************************
 2. list different database in MySQL
 =>
-	SHOW DATABASES
+	SHOW DATABASES;
 	
 *************************************************************************
 3. How to connect to specific database
+=>
+	USE <database_name>;
+	eg:- USE PRACTICE
 
+*************************************************************************
 4. List all the tables available in given database
-
+=>
+	SHOW TABLES;
+*************************************************************************
 5. Switch from one database to other
+=>
+	USE <database_name>;
 
+*************************************************************************
 6. Run the script "SampleScott_Schema.sql" in your database
-
+=>
+	SOURCE 	<PATH OF SampleScott_Schema.sql >
+*************************************************************************
 7. List the tables that you have in the database now
+=>
+		SHOW TABLES;
 
+*************************************************************************
 8. Describe the structure of each table in MySQL
+=>
+	DESCRIBE bonus;
+	DESCRIBE dept;
+	DESCRIBE dummy;
+	DESCRIBE emp;
+	DESCRIBE salgrade;
 
+*************************************************************************
 9. Export the table data in external file in MySQL
+=>
+	TABLE emp INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/CPY_PRAC.csv' FIELDS ENCLOSED BY '"' TERMINATED BY ';' ESCAPED BY '"';
+
+*************************************************************************
 
 10. Show the data from each table in MySQL
+=>
+	SELECT * FROM emp;
+	SELECT * FROM dept;
+	SELECT * FROM dummy;
+	SELECT * FROM bonus;
+	SELECT * FROM salgrade;
 
+*************************************************************************
 11. Interact with MySQL WorkBench Software
 
+
+*************************************************************************
 12. Clear the MySQL command prompt
+=>
+	system cls
 
+*************************************************************************
 13. Fire command to check current user in database
+=>
+	mysql> SELECT user();
+	+----------------+
+	| user()         |
+	+----------------+
+	| root@localhost |
+	+----------------+
 
+*************************************************************************
 14. Fire command to see current date and time of server
+=>
+	select current_timestamp;
 
+*****************************************************************************
 15. Fire command to assign the output to select command to variable in MySQL
+=>
+	mysql> SET @VAR1 = (SELECT ENAME FROM emp LIMIT 1);
+Query OK, 0 rows affected (0.00 sec)
 
+mysql> SELECT @VAR1
+    -> ;
++--------+
+| @VAR1  |
++--------+
+| MILLER |
++--------+
+1 row in set (0.00 sec)
+
+*****************************************************************************
 16. Print the value stored in variable on the screen
+=>
+	mysql> SELECT @VAR1
 
+*****************************************************************************
 17. Observe the output of command "select DATE(current_date() +2),current_date();"
+=>
+	mysql> select DATE(current_date() +2),current_date();
++-------------------------+----------------+
+| DATE(current_date() +2) | current_date() |
++-------------------------+----------------+
+| 2021-10-20              | 2021-10-18     |
++-------------------------+----------------+
+
+*****************************************************************************
 
 18. Observe the command "select null;"
       Identify what is null
+
+=>
+		mysql> select null;
+		+------+
+		| NULL |
+		+------+
+		| NULL |
+		+------+
+		1 row in set (0.00 sec)
