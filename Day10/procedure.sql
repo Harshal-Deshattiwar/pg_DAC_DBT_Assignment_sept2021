@@ -40,7 +40,7 @@ IF emp_no IS NULL THEN
 
 	INSERT INTO emp_backup 
 	SELECT * FROM emp 
-	WHERE ename = 'MARTIN';
+	WHERE ename = emp_name;
     
     DELETE FROM emp WHERE ename = emp_name;
     
