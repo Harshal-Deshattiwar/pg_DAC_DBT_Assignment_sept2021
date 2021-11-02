@@ -92,3 +92,31 @@ BEGIN
 END //
 
 delimiter ;
+
+/*
+5. Prepare a program to list those employee who are earning less then avg of there deparment. 
+This program may take input as (p_salary_fix BOOLEAN). If the input is given as true then these employees salary must be set to AVG Salary + 100$.
+
+*/
+
+
+delimiter //
+Create procedure AssQues51 (
+p_salary_fix boolean)
+begin 
+
+SELECT ename
+ FROM emp p
+ WHERE sal < (SELECT AVG(sal)
+              FROM emp k
+              WHERE k.DEPTNO = p.deptno);
+
+IF p_salary_fix THEN
+		UPDATE emp a , (SELECT deptno,AVG(sal) avg_sal,AVG(sal) + 100 upd_sal
+				          FROM emp 
+				      GROUP BY deptno) e
+		SET sal = e.upd_sal
+	   WHERE a.deptno = e.deptno
+         AND a.sal < e.avg_sal;
+END IF;
+END //
